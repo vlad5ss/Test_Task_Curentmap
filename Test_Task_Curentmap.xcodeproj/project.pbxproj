@@ -8,22 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		0413B6421E9CEB680020AB73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B6411E9CEB680020AB73 /* AppDelegate.swift */; };
-		0413B6441E9CEB680020AB73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B6431E9CEB680020AB73 /* ViewController.swift */; };
 		0413B6471E9CEB680020AB73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0413B6451E9CEB680020AB73 /* Main.storyboard */; };
 		0413B64A1E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0413B6481E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodeld */; };
 		0413B64C1E9CEB680020AB73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0413B64B1E9CEB680020AB73 /* Assets.xcassets */; };
 		0413B64F1E9CEB680020AB73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0413B64D1E9CEB680020AB73 /* LaunchScreen.storyboard */; };
+		0413B65A1E9CEF530020AB73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413B6591E9CEF530020AB73 /* MapKit.framework */; };
+		0413B65C1E9CEF5D0020AB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413B65B1E9CEF5D0020AB73 /* CoreLocation.framework */; };
+		0413B68B1E9E05610020AB73 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B68A1E9E05610020AB73 /* constants.swift */; };
+		0413B68D1E9E06360020AB73 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B68C1E9E06360020AB73 /* Location.swift */; };
+		0413B68F1E9E06A60020AB73 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B68E1E9E06A60020AB73 /* CurrentWeather.swift */; };
+		0413B6911E9E071F0020AB73 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B6901E9E071F0020AB73 /* Forecast.swift */; };
+		0413B6971E9E09BA0020AB73 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413B6961E9E09BA0020AB73 /* Alamofire.framework */; };
+		04A14F031E9F701200031327 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A14F021E9F701200031327 /* FirstViewController.swift */; };
+		04A14F051E9F719700031327 /* SaveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A14F041E9F719700031327 /* SaveTableViewController.swift */; };
+		89E490F129212350B9EA4373 /* Pods_Test_Task_Curentmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D109491D5063CA3F2872BE /* Pods_Test_Task_Curentmap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0413B63E1E9CEB680020AB73 /* Test_Task_Curentmap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_Task_Curentmap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0413B6411E9CEB680020AB73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0413B6431E9CEB680020AB73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0413B6461E9CEB680020AB73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0413B6491E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Test_Task_Curentmap.xcdatamodel; sourceTree = "<group>"; };
 		0413B64B1E9CEB680020AB73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0413B64E1E9CEB680020AB73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0413B6501E9CEB680020AB73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0413B6591E9CEF530020AB73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0413B65B1E9CEF5D0020AB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0413B68A1E9E05610020AB73 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		0413B68C1E9E06360020AB73 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		0413B68E1E9E06A60020AB73 /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		0413B6901E9E071F0020AB73 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		0413B6961E9E09BA0020AB73 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Test_Task_Curentmap-atwcoqjdooqnmhaaiagfmfhymcwh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		04A14F021E9F701200031327 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		04A14F041E9F719700031327 /* SaveTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTableViewController.swift; sourceTree = "<group>"; };
+		23D109491D5063CA3F2872BE /* Pods_Test_Task_Curentmap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_Task_Curentmap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72B513701671F8D077BAF02A /* Pods-Test_Task_Curentmap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_Curentmap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test_Task_Curentmap/Pods-Test_Task_Curentmap.debug.xcconfig"; sourceTree = "<group>"; };
+		84DDD8B0D0E69159B86DFBC0 /* Pods-Test_Task_Curentmap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_Curentmap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test_Task_Curentmap/Pods-Test_Task_Curentmap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0413B6971E9E09BA0020AB73 /* Alamofire.framework in Frameworks */,
+				0413B65C1E9CEF5D0020AB73 /* CoreLocation.framework in Frameworks */,
+				0413B65A1E9CEF530020AB73 /* MapKit.framework in Frameworks */,
+				89E490F129212350B9EA4373 /* Pods_Test_Task_Curentmap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +66,8 @@
 			children = (
 				0413B6401E9CEB680020AB73 /* Test_Task_Curentmap */,
 				0413B63F1E9CEB680020AB73 /* Products */,
+				0413B6581E9CEF530020AB73 /* Frameworks */,
+				36E6D1DA622C712348398EA0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +82,72 @@
 		0413B6401E9CEB680020AB73 /* Test_Task_Curentmap */ = {
 			isa = PBXGroup;
 			children = (
-				0413B6411E9CEB680020AB73 /* AppDelegate.swift */,
-				0413B6431E9CEB680020AB73 /* ViewController.swift */,
-				0413B6451E9CEB680020AB73 /* Main.storyboard */,
-				0413B64B1E9CEB680020AB73 /* Assets.xcassets */,
-				0413B64D1E9CEB680020AB73 /* LaunchScreen.storyboard */,
-				0413B6501E9CEB680020AB73 /* Info.plist */,
-				0413B6481E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodeld */,
+				04A14F081EA0246700031327 /* Modal */,
+				04A14F091EA0248200031327 /* Service */,
+				0413B69B1E9E72740020AB73 /* Controller */,
+				04A14F0A1EA024AF00031327 /* Support */,
 			);
 			path = Test_Task_Curentmap;
+			sourceTree = "<group>";
+		};
+		0413B6581E9CEF530020AB73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0413B6961E9E09BA0020AB73 /* Alamofire.framework */,
+				0413B65B1E9CEF5D0020AB73 /* CoreLocation.framework */,
+				0413B6591E9CEF530020AB73 /* MapKit.framework */,
+				23D109491D5063CA3F2872BE /* Pods_Test_Task_Curentmap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0413B69B1E9E72740020AB73 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04A14F021E9F701200031327 /* FirstViewController.swift */,
+				04A14F041E9F719700031327 /* SaveTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		04A14F081EA0246700031327 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				0413B68C1E9E06360020AB73 /* Location.swift */,
+				0413B68E1E9E06A60020AB73 /* CurrentWeather.swift */,
+			);
+			name = Modal;
+			sourceTree = "<group>";
+		};
+		04A14F091EA0248200031327 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0413B6901E9E071F0020AB73 /* Forecast.swift */,
+				0413B68A1E9E05610020AB73 /* constants.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		04A14F0A1EA024AF00031327 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0413B6411E9CEB680020AB73 /* AppDelegate.swift */,
+				0413B64B1E9CEB680020AB73 /* Assets.xcassets */,
+				0413B6451E9CEB680020AB73 /* Main.storyboard */,
+				0413B6481E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodeld */,
+				0413B64D1E9CEB680020AB73 /* LaunchScreen.storyboard */,
+				0413B6501E9CEB680020AB73 /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		36E6D1DA622C712348398EA0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				72B513701671F8D077BAF02A /* Pods-Test_Task_Curentmap.debug.xcconfig */,
+				84DDD8B0D0E69159B86DFBC0 /* Pods-Test_Task_Curentmap.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0413B6531E9CEB680020AB73 /* Build configuration list for PBXNativeTarget "Test_Task_Curentmap" */;
 			buildPhases = (
+				B62DF6B13E748DEC4BDEDC55 /* [CP] Check Pods Manifest.lock */,
 				0413B63A1E9CEB680020AB73 /* Sources */,
 				0413B63B1E9CEB680020AB73 /* Frameworks */,
 				0413B63C1E9CEB680020AB73 /* Resources */,
+				184C58333420D5FDBF09CEFD /* [CP] Embed Pods Frameworks */,
+				FDD56B40A0E16119784B6289 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -99,6 +185,7 @@
 				TargetAttributes = {
 					0413B63D1E9CEB680020AB73 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = SFQE5Y54BY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,14 +221,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		184C58333420D5FDBF09CEFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Test_Task_Curentmap/Pods-Test_Task_Curentmap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B62DF6B13E748DEC4BDEDC55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FDD56B40A0E16119784B6289 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Test_Task_Curentmap/Pods-Test_Task_Curentmap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0413B63A1E9CEB680020AB73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0413B6441E9CEB680020AB73 /* ViewController.swift in Sources */,
+				04A14F051E9F719700031327 /* SaveTableViewController.swift in Sources */,
+				0413B68F1E9E06A60020AB73 /* CurrentWeather.swift in Sources */,
 				0413B6421E9CEB680020AB73 /* AppDelegate.swift in Sources */,
+				04A14F031E9F701200031327 /* FirstViewController.swift in Sources */,
+				0413B6911E9E071F0020AB73 /* Forecast.swift in Sources */,
 				0413B64A1E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodeld in Sources */,
+				0413B68B1E9E05610020AB73 /* constants.swift in Sources */,
+				0413B68D1E9E06360020AB73 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +402,10 @@
 		};
 		0413B6541E9CEB680020AB73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B513701671F8D077BAF02A /* Pods-Test_Task_Curentmap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SFQE5Y54BY;
 				INFOPLIST_FILE = Test_Task_Curentmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damneed.Test-Task-Curentmap";
@@ -274,8 +416,10 @@
 		};
 		0413B6551E9CEB680020AB73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DDD8B0D0E69159B86DFBC0 /* Pods-Test_Task_Curentmap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SFQE5Y54BY;
 				INFOPLIST_FILE = Test_Task_Curentmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damneed.Test-Task-Curentmap";
@@ -303,6 +447,7 @@
 				0413B6551E9CEB680020AB73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
