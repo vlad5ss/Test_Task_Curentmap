@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Save Table View Controller-->
         <scene sceneID="Tma-2Q-fG9">
             <objects>
                 <tableViewController id="Kpa-Tj-LOf" customClass="SaveTableViewController" customModule="Test_Task_Curentmap" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,6 @@
                             <outlet property="delegate" destination="Kpa-Tj-LOf" id="Ofx-zM-Nsk"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="7TR-Xp-uk6"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="SaX-Zg-neg">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="vF5-1Z-XTx">
@@ -55,7 +54,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGt-ED-M5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="1198"/>
+            <point key="canvasLocation" x="1965" y="1197.8873239436621"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WEa-qP-y1x">
@@ -71,7 +70,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1886" y="1198"/>
+            <point key="canvasLocation" x="2881.875" y="1197.8873239436621"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="8B4-Pt-2Fk">
@@ -235,15 +234,34 @@
                     </tabBar>
                     <connections>
                         <segue destination="iyN-6O-VB8" kind="relationship" relationship="viewControllers" id="nhi-7B-QIX"/>
-                        <segue destination="Kpa-Tj-LOf" kind="relationship" relationship="viewControllers" id="Mqt-xj-3SB"/>
+                        <segue destination="Elq-S0-GWM" kind="relationship" relationship="viewControllers" id="Mqt-xj-3SB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgh-iP-0nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="97" y="479"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="Yp5-6G-Lm8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Elq-S0-GWM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="7TR-Xp-uk6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1iK-xF-Kw8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kpa-Tj-LOf" kind="relationship" relationship="rootViewController" id="KTU-xd-303"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NER-pf-6JC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967.5" y="1197.8873239436621"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nhi-7B-QIX"/>
+        <segue reference="zAa-hP-ASi"/>
     </inferredMetricsTieBreakers>
 </document>
