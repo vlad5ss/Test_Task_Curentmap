@@ -14,12 +14,12 @@ import Alamofire
 class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var userPinView: MKAnnotationView!
-    lazy var geoCoder = CLGeocoder()
-    let annotation = MKPointAnnotation()
     let locationManager = CLLocationManager()
     var currentWeather = CurrentWeather()
     var forecast: Forecast!
     var forecasts = [Forecast]()
+    var place: Place?
+    var places: [Place]!
     
     @IBOutlet weak var datenow: UILabel!
     @IBOutlet weak var currentTempnow: UILabel!
@@ -32,125 +32,21 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let uilpgr = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.longpress(gestureRecognizer:)))
-        
-        uilpgr.minimumPressDuration = 2
-        
-        mapView.addGestureRecognizer(uilpgr)
-                if activePlace == -1 {
-
-        
+        if let place = place {
+            load(place: place)
+        } else {
+            print("not load")
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        mapView.addAnnotation(annotation)
         mapView.showsUserLocation = true
-                    
-                } else {
-                    
-                                // Get the details to display on map
-                    
-                                if places.count > activePlace {
-                    
-                                    if let name = places[activePlace]["name"] {
-                    
-                                        if let lat = places[activePlace]["lat"] {
-                    
-                                            if let lon = places[activePlace]["lon"] {
-                    
-                                                if let latitude = Double(lat) {
-                    
-                                                    if let longitude = Double(lon) {
-                    
-                                                        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                    
-                                                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    
-                                                        let region = MKCoordinateRegion(center: coordinate, span: span)
-                    
-                                                        self.mapView.setRegion(region, animated: true)
-                    
-                                                        let annotation = MKPointAnnotation()
-                    
-                                                        annotation.coordinate = coordinate
-                                                        
-                                                        annotation.title = name
-                                                        
-                                                        self.mapView.addAnnotation(annotation)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
+    }
     }
     
-    
-        func longpress(gestureRecognizer: UIGestureRecognizer){
-    
-            if gestureRecognizer.state == UIGestureRecognizerState.began {
-    
-                let touchPoint = gestureRecognizer.location(in: self.mapView)
-    
-                let newCoordinate = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-    
-                let location = CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
-    
-                var title = ""
-    
-                CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
-    
-                    if error != nil {
-    
-                        print(error as Any)
-    
-                    } else {
-    
-                        if let placemark = placemarks?[0] {
-    
-                            if placemark.subThoroughfare != nil {
-    
-                                title += placemark.subThoroughfare! + " "
-                            }
-    
-                            if placemark.thoroughfare != nil {
-    
-                                title += placemark.thoroughfare!
-                            }
-                        }
-    
-                    }
-    
-                    if title == "" {
-    
-                        title = "Added \(NSDate())"
-                    }
-    
-                    let annotation = MKPointAnnotation()
-    
-                    annotation.coordinate = newCoordinate
-    
-                    annotation.title = title
-    
-                    self.mapView.addAnnotation(annotation)
-    
-                    places.append(["name":title,"lat":newCoordinate.latitude.description,"lon":newCoordinate.longitude.description])
-                    print(places)
-                    
-                    UserDefaults.standard.set(places, forKey: "places")
-                })
-            }
-        }
-    
-    
-    
-    
-    
-    
-    
+    @IBAction func SaveLocationButton(_ sender: Any) {
+ 
+    }
     
     private func locationManager(_ manager: CLLocationManager,
                                  didFailWithError error: NSError) {
@@ -165,61 +61,148 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
                 completion: nil)
     }
     
+    func load(place: Place) {
+        print("func not load")
+        let coordinate = CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)
+        getPlace(coordinate: coordinate ) {
+            (place) in
+            self.places.append(place)
+            Place.save(places: self.places)
+        }
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        self.mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = place.name
+        self.mapView.addAnnotation(annotation)
+    }
+    
+    
+    func createAnnotation(title: String, coordinate: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = title
+        self.mapView.addAnnotation(annotation)
+    }
+    
+    
+    func getPlace(coordinate: CLLocationCoordinate2D, completionHandler: @escaping (_ place: Place) -> Void) {
+        
+        let location = CLLocation(latitude: coordinate.latitude,
+                                  longitude: coordinate.longitude)
+        
+        print(coordinate.latitude)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {
+            (placemarks, error) in
+            var title = ""
+            if let error = error {
+                print(error)
+            } else {
+                if let placemark = placemarks?[0] {
+                    if placemark.subThoroughfare != nil {
+                        title += placemark.subThoroughfare! + " "
+                    }
+                    if placemark.thoroughfare != nil {
+                        title += placemark.thoroughfare!
+                    }
+                }
+            }
+            
+            if title == "" {
+                title = "Added \(NSDate())"
+            }
+            print(title)
+            self.createAnnotation(title: title, coordinate: coordinate)
+            let newPlace = Place(name: title, lat: coordinate.latitude,
+                                 lon: coordinate.longitude)
+            completionHandler(newPlace)
+        })
+    }
+
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations
         locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        let latitude =  locations.last
         Location.sharedInstance.latitude = locationManager.location?.coordinate.latitude
         Location.sharedInstance.longitude = locationManager.location?.coordinate.longitude
         currentWeather.downloadWeatherData{
             self.downloadForecastData{
-                //setup UI to load downloaded data
                 self.updateMainUI()
             }
         }
-        if let newLocation = locations.last {
-            
-            let latitudeString = String(format: "%g\u{00B0}",
-                                        newLocation.coordinate.latitude)
-            latitudeLabel.text = latitudeString
-            let longitudeString = String(format: "%g\u{00B0}",
-                                         newLocation.coordinate.longitude)
-            longitudeLabel.text = longitudeString
-            
-            annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
-            let center = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
-            // Setting map area' limits
+        let location = locations[0]
+        self.latitudeLabel.text = String(location.coordinate.latitude)
+        self.longitudeLabel.text = String(location.coordinate.longitude)
+
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let latDelta:CLLocationDegrees = 0.01
             let lonDelta:CLLocationDegrees = 0.01
-            //creating the "square" that will be applied to the region
-            //This is the object that defines the area that the map will display
-            //Basically, the map will be centered in this area
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta))
-            
+        self.mapView.setRegion(region, animated: true)
+                    let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+
+                    CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+        
+                if error != nil {
+        
+                    print(error)
+        
+                } else {
+        
+                    if let placemark = placemarks?[0] {
+        
+                        var address = ""
+        
+                        if placemark.subThoroughfare != nil {
+        
+                            address += placemark.subThoroughfare! + " "
+        
+                        }
+        
+                        if placemark.thoroughfare != nil {
+        
+                            address += placemark.thoroughfare! + " "
+        
+                        }
+        
+                        if placemark.subLocality != nil {
+        
+                            address += placemark.subLocality! + " "
+        
+                        }
+        
+                        if placemark.subAdministrativeArea != nil {
+        
+                            address += placemark.subAdministrativeArea! + "\n "
+        
+                        }
+        
+                        if placemark.postalCode != nil {
+        
+                            address += placemark.postalCode! + " "
+                            
+                        }
+                        
+                        if placemark.country != nil {
+                            
+                            address += placemark.country! + " "
+                            
+                        }
+                        print(address)
+                        self.cityName.text = address
+                        self.createAnnotation(title: address, coordinate:  location.coordinate)
+//                                    let newPlace = Place(name: title!, lat: coordinate.latitude,
+//                                                         lon: coordinate.longitude)
+                    }
+                    
+                }
+                
+            }
             self.mapView.setRegion(region, animated: true)
-            
-            //CLLocation needed to get the address using reverseGeocodeLocation
-            let location = CLLocation(latitude:newLocation.coordinate.latitude,longitude: newLocation.coordinate.longitude)
-                        geoCoder.reverseGeocodeLocation(location)
-                        {
-                            (placemarks, error) -> Void in
-                            let placeArray = placemarks as [CLPlacemark]!
-                            if(placeArray != nil){
-                                // Place details
-                                var placeMark: CLPlacemark!
-                                placeMark = placeArray?[0]
-                                // City
-                                if let city = placeMark.addressDictionary!["City"] as? NSString {
-                                print(city)
-                                      self.cityName.text="This " + "\(city)"
-                                }
-                                if let country = placeMark.addressDictionary!["Country"] as? NSString {
-                                    print(country)
-                                }
-                            }}
-            self.mapView.addAnnotation(annotation)
-            
-        }}
+//            self.mapView.addAnnotation(annotation)
+        }
     
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -238,6 +221,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
         
     }
+
+  
     
     
     func downloadForecastData(completed: @escaping DownloadComplete){
@@ -266,6 +251,43 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     }
     
     
+//    / Saves the timestamp of when the user has made a change to the NSUserDefaults
+//    func saveTimestamp() {
+//        let prefs = UserDefaults.standard
+//        let timestamp = Date()
+//        prefs.set(timestamp, forKey: ViewController.lastUpdate)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = DateFormatter.Style.long
+//        dateFormatter.timeStyle = .medium
+//        lastUpdateText.text = "Last Update:" + dateFormatter.string(from: timestamp)
+//    }
+//    
+//    // Updates the view with the user values already stored in NSUserDefaults
+//    func getUserPreferences() {
+//        let prefs = UserDefaults.standard
+//        
+//        // Get Favorite beer
+//        if let beer = prefs.string(forKey: ViewController.favoriteBeer) {
+//            favoriteBeerEdit.text = beer
+//        }
+//        
+//        // Get profile image
+//        if let imageData = prefs.object(forKey: ViewController.profileImage) as? Data {
+//            let storedImage = UIImage.init(data: imageData)
+//            profileImage.image = storedImage
+//        }
+//        
+//        // Get the last time something was stored
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = DateFormatter.Style.long
+//        dateFormatter.timeStyle = .medium
+//        if let lastUpdateStored = (prefs.object(forKey: ViewController.lastUpdate) as? Date) {
+//            lastUpdateText.text = "Last Update:" + dateFormatter.string(from: lastUpdateStored)
+//        } else {
+//            lastUpdateText.text = "Last Update: Never"
+//        }
+//    }
+
     
     
 }

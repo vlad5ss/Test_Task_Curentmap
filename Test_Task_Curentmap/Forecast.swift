@@ -1,10 +1,4 @@
-//
-//  Forecast.swift
-//  Test_Task_Curentmap
-//
-//  Created by mac on 4/12/17.
-//  Copyright © 2017 mac. All rights reserved.
-//
+
 
 import UIKit
 import Alamofire
