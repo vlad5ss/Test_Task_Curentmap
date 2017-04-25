@@ -6,78 +6,80 @@
 //
 //
 import UIKit
+import CoreLocation
 
 
 class SecondViewController:   UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var editButton: UIBarButtonItem!
     
-    
-    var places: [Place]!
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    @IBAction func startEditing(_ sender: Any) {
         
-        places = Place.loadAll()
+        self.isEditing = !self.isEditing
         
-        if places.isEmpty {
-            let defaultPlace = Place(name: "Berlin", lat: 14.594322, lon: 120.994177)
-            places.append(defaultPlace)
-            Place.save(places: places)
+        if editButton.title == "Edit" {
+            editButton.title = "OK"
+        } else {
+            editButton.title = "Edit"
         }
     }
+
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return(listRequests.count)
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            places.remove(at: indexPath.row)
-            Place.save(places: places)
-            tableView.reloadData()
-        }
-    }
-    
-    
-    // MARK: - Table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = places[indexPath.row].name
-        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.numberOfLines = 2
+        if listRequests[indexPath.row].toString() != nil {
+        cell.textLabel?.text = listRequests[indexPath.row].toString()
+                      cell.accessoryType = .disclosureIndicator
+        }
         return cell
     }
     
+
+    
+    
+//        override func viewDidAppear(_ animated: Bool) {
+//            super.viewDidAppear(animated)
+//    
+//            tableView.reloadData()
+//        }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            listRequests.remove(at: indexPath.row)
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: listRequests)
+            UserDefaults.standard.set(encodedData, forKey: "listRequest")
+            tableView.reloadData()
+        }}
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Show Map", sender: places[indexPath.row])
+        performSegue(withIdentifier: "Show Map", sender: nil)
+        history = true
+        request = listRequests[indexPath.row]
+        UIView.setAnimationsEnabled(false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let mapController = segue.destination as? FirstViewController {
-            mapController.places = places
-            if segue.identifier == "Show Map",
-                let place = sender as? Place {
-                mapController.place = place
-            } else if segue.identifier == "Add Place" {
-                mapController.place = nil
-            }
-        }
-        
-    }
     
 }

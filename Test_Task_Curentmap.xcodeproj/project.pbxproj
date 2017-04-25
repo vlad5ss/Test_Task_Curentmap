@@ -14,10 +14,6 @@
 		0413B64F1E9CEB680020AB73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0413B64D1E9CEB680020AB73 /* LaunchScreen.storyboard */; };
 		0413B65A1E9CEF530020AB73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413B6591E9CEF530020AB73 /* MapKit.framework */; };
 		0413B65C1E9CEF5D0020AB73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413B65B1E9CEF5D0020AB73 /* CoreLocation.framework */; };
-		0413B68B1E9E05610020AB73 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B68A1E9E05610020AB73 /* constants.swift */; };
-		0413B68D1E9E06360020AB73 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B68C1E9E06360020AB73 /* Location.swift */; };
-		0413B68F1E9E06A60020AB73 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B68E1E9E06A60020AB73 /* CurrentWeather.swift */; };
-		0413B6911E9E071F0020AB73 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413B6901E9E071F0020AB73 /* Forecast.swift */; };
 		0413B6971E9E09BA0020AB73 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413B6961E9E09BA0020AB73 /* Alamofire.framework */; };
 		04A14F031E9F701200031327 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A14F021E9F701200031327 /* FirstViewController.swift */; };
 		04A14F101EA51A4200031327 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A14F0F1EA51A4200031327 /* SecondViewController.swift */; };
@@ -35,10 +31,6 @@
 		0413B6501E9CEB680020AB73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0413B6591E9CEF530020AB73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0413B65B1E9CEF5D0020AB73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0413B68A1E9E05610020AB73 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		0413B68C1E9E06360020AB73 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		0413B68E1E9E06A60020AB73 /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
-		0413B6901E9E071F0020AB73 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		0413B6961E9E09BA0020AB73 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Test_Task_Curentmap-atwcoqjdooqnmhaaiagfmfhymcwh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		04A14F021E9F701200031327 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		04A14F0F1EA51A4200031327 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				04A14F081EA0246700031327 /* Modal */,
-				04A14F091EA0248200031327 /* Service */,
 				0413B69B1E9E72740020AB73 /* Controller */,
 				04A14F0A1EA024AF00031327 /* Support */,
 			);
@@ -115,20 +106,9 @@
 		04A14F081EA0246700031327 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				0413B68C1E9E06360020AB73 /* Location.swift */,
-				0413B68E1E9E06A60020AB73 /* CurrentWeather.swift */,
 				04A14F111EA545BA00031327 /* Place.swift */,
 			);
 			name = Modal;
-			sourceTree = "<group>";
-		};
-		04A14F091EA0248200031327 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				0413B6901E9E071F0020AB73 /* Forecast.swift */,
-				0413B68A1E9E05610020AB73 /* constants.swift */,
-			);
-			name = Service;
 			sourceTree = "<group>";
 		};
 		04A14F0A1EA024AF00031327 /* Support */ = {
@@ -277,15 +257,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0413B68F1E9E06A60020AB73 /* CurrentWeather.swift in Sources */,
 				0413B6421E9CEB680020AB73 /* AppDelegate.swift in Sources */,
 				04A14F031E9F701200031327 /* FirstViewController.swift in Sources */,
-				0413B6911E9E071F0020AB73 /* Forecast.swift in Sources */,
 				0413B64A1E9CEB680020AB73 /* Test_Task_Curentmap.xcdatamodeld in Sources */,
-				0413B68B1E9E05610020AB73 /* constants.swift in Sources */,
 				04A14F101EA51A4200031327 /* SecondViewController.swift in Sources */,
 				04A14F121EA545BB00031327 /* Place.swift in Sources */,
-				0413B68D1E9E06360020AB73 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
