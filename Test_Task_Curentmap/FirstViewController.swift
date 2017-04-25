@@ -247,9 +247,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     
     func codingAndSaving () {
-        
-        print("\n___CURRENT REQUEST___\n\(request.datetime), \(request.lat), \(request.lon), \(request.namelocation), \(request.countryname), \(request.temperature)˚C, \(request.condition) ")
-        
         printData()
         
         listRequests.append(request)
@@ -263,11 +260,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             let myList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Place] {
             
             listRequests = myList
-            
-            print("\(listRequests.count) element(s) is/are loaded from previous sessions:" )
-            listRequests.forEach ({ print("-----", $0.datetime, $0.lat, $0.lon, $0.namelocation, $0.countryname, $0.locationDefined, $0.temperature, $0.condition )})
-        } else {
-            print("There is an issue")
         }
     }
     

@@ -42,7 +42,7 @@ class SecondViewController:   UIViewController, UITableViewDataSource, UITableVi
         
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.adjustsFontSizeToFitWidth = true
-        cell.textLabel?.numberOfLines = 2
+        cell.textLabel?.numberOfLines = 3
         if listRequests[indexPath.row].toString() != nil {
         cell.textLabel?.text = listRequests[indexPath.row].toString()
                       cell.accessoryType = .disclosureIndicator
@@ -50,14 +50,6 @@ class SecondViewController:   UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-
-    
-    
-//        override func viewDidAppear(_ animated: Bool) {
-//            super.viewDidAppear(animated)
-//    
-//            tableView.reloadData()
-//        }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -81,5 +73,11 @@ class SecondViewController:   UIViewController, UITableViewDataSource, UITableVi
         UIView.setAnimationsEnabled(false)
     }
     
+ func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        
+     let itemToMove =  listRequests[fromIndexPath.row]
+        listRequests.remove(at: fromIndexPath.row)
+       listRequests.insert(itemToMove, at: fromIndexPath.row)
+    }
     
 }
