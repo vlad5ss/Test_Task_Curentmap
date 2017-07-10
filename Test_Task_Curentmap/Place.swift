@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 
 class Place: NSObject, NSCoding  {
-    
+    //OUr model
     var lat : CLLocationDegrees = 0.0
     var lon : CLLocationDegrees = 0.0
     var datetime: String = ""
