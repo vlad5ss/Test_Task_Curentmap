@@ -130,7 +130,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             
             if error != nil {
                 
-                print(error)
+                print(error ?? <#default value#>)
                 
             } else {
                 if let placemark = placemarks?[0] {
