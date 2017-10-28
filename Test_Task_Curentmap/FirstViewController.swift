@@ -26,7 +26,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     var dataExists: Bool = true;
     var locationUpdated = false
     
-    
+    //my work
     @IBOutlet weak var datenow: UILabel!
     @IBOutlet weak var currentTempnow: UILabel!
     @IBOutlet weak var currentWeathernow: UILabel!
